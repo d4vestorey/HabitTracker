@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "gJKBMYVaW80=",
+  "success": true,
+  "projectFilePath": "/Users/davestorey/csharpacademy/HabitTracker/HabitTracker/HabitTracker.csproj",
+  "expectedPackageFiles": [
+    "/Users/davestorey/.nuget/packages/microsoft.data.sqlite/9.0.3/microsoft.data.sqlite.9.0.3.nupkg.sha512",
+    "/Users/davestorey/.nuget/packages/microsoft.data.sqlite.core/9.0.3/microsoft.data.sqlite.core.9.0.3.nupkg.sha512",
+    "/Users/davestorey/.nuget/packages/spectre.console/0.49.1/spectre.console.0.49.1.nupkg.sha512",
+    "/Users/davestorey/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.1.10/sqlitepclraw.bundle_e_sqlite3.2.1.10.nupkg.sha512",
+    "/Users/davestorey/.nuget/packages/sqlitepclraw.core/2.1.10/sqlitepclraw.core.2.1.10.nupkg.sha512",
+    "/Users/davestorey/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.1.10/sqlitepclraw.lib.e_sqlite3.2.1.10.nupkg.sha512",
+    "/Users/davestorey/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.10/sqlitepclraw.provider.e_sqlite3.2.1.10.nupkg.sha512",
+    "/Users/davestorey/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512"
+  ],
+  "logs": []
+}
