@@ -101,6 +101,51 @@ namespace HabitTracker.Database
             }
         }
 
+        internal void EditHabitDescription(string desc, int id)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE habit SET Description = @description WHERE Id = @id";
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@description", desc);
+                    command.Parameters.AddWithValue("@id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        internal void EditHabitCount(int count, int id)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE habit SET Count = @count WHERE Id = @id";
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@count", count);
+                    command.Parameters.AddWithValue("@id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        internal void EditHabitDate(DateTime date, int id)
+        {
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE habit SET Date = @date WHERE Id = @id";
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@date", date);
+                    command.Parameters.AddWithValue("@id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         internal void DeleteHabit(int id)
         {
             using (var connection = new SqliteConnection(connectionString))
@@ -114,10 +159,10 @@ namespace HabitTracker.Database
                 }
             }
         }
-////////
+        ////////
         internal int ReadLineHelper(string type)
         {
-            
+
             int result;
 
             while (true)
@@ -136,16 +181,16 @@ namespace HabitTracker.Database
 
         internal bool Helper(int n, string t)
         {
-            switch(t)
+            switch (t)
             {
                 case Constants.Day:
-                return n > 0 || n < 31;
+                    return n > 0 || n < 31;
 
                 case Constants.Month:
-                return n > 0 || n < 12;
+                    return n > 0 || n < 12;
 
                 case Constants.Year:
-                return n > 0 || n < 9999;
+                    return n > 0 || n < 9999;
 
                 default:
                     return false;

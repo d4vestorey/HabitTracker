@@ -16,5 +16,12 @@ namespace HabitTracker.Reference
             Today,
             Previous
         }
+
+        internal enum EditChoice
+        {
+            Date,
+            Description,
+            Count
+        }
     }
 }
