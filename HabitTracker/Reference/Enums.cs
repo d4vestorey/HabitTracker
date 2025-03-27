@@ -8,6 +8,7 @@ namespace HabitTracker.Reference
             Read,
             Update,
             Delete,
+            Summary,
             Exit
         }
 

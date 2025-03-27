@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using HabitTracker.Models;
 using HabitTracker.Reference;
 using Microsoft.Data.Sqlite;
@@ -44,6 +40,32 @@ namespace HabitTracker.Database
                 }
             }
             return habits;
+        }
+
+        internal (int Sum, DateTime MaxDate, DateTime MinDate) GetSummary()
+        {
+
+            int Sum = 0;
+            DateTime MaxDate = DateTime.Now;
+            DateTime MinDate = DateTime.Now;
+
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT SUM(Count) AS Sum, MAX(Date) AS MaxDate, MIN(Date) AS MinDate FROM habit";
+                using (var command = new SqliteCommand(query, connection))
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Sum = Convert.ToInt32(reader["Sum"]);
+                        MaxDate = Convert.ToDateTime(reader["MaxDate"]);
+                        MinDate = Convert.ToDateTime(reader["MinDate"]);
+                    }
+                }
+            }
+
+            return (Sum, MaxDate, MinDate);
         }
 
         internal void AddHabit(Habit habit)
@@ -179,18 +201,18 @@ namespace HabitTracker.Database
             }
         }
 
-        internal bool Helper(int n, string t)
+        internal bool Helper(int number, string type)
         {
-            switch (t)
+            switch (type)
             {
                 case Constants.Day:
-                    return n > 0 || n < 31;
+                    return number > 0 || number < 31;
 
                 case Constants.Month:
-                    return n > 0 || n < 12;
+                    return number > 0 || number < 12;
 
                 case Constants.Year:
-                    return n > 0 || n < 9999;
+                    return number > 0 || number < 9999;
 
                 default:
                     return false;

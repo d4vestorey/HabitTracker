@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using HabitTracker.Database;
 using HabitTracker.Models;
 using HabitTracker.Reference;
@@ -41,10 +37,10 @@ namespace HabitTracker.Controllers
 
 
                         var dateSelection = AnsiConsole.Prompt(
-                    new SelectionPrompt<Enums.DateChoice>()
-                    .Title("Enter date habit completed on?")
-                    .AddChoices(Enum.GetValues<Enums.DateChoice>())
-                    );
+                        new SelectionPrompt<Enums.DateChoice>()
+                        .Title("Enter date habit completed on?")
+                        .AddChoices(Enum.GetValues<Enums.DateChoice>())
+                     );
 
                         switch (dateSelection)
                         {
@@ -186,6 +182,13 @@ namespace HabitTracker.Controllers
                             Console.ReadLine();
                         }
 
+                        break;
+
+                    case Enums.MainMenuChoices.Summary:
+                        var summary = habitRepository.GetSummary();
+                        
+                        AnsiConsole.WriteLine($"{summary.MinDate} || {summary.MaxDate} || {summary.Sum}");
+                        Console.ReadLine();
                         break;
 
 
